@@ -1,6 +1,6 @@
 CC=g++
 CC_FLAGS=-Wall -Werror -ansi -pedantic
-EXEC=test.out
+EXEC=rshell all
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 
