@@ -5,7 +5,11 @@ A command shell written in C++. It can read in single commands, or multiple comm
 
 For &&, the command after && will run only if the command before it sucessfully ran.
 
-For ||
+For ||, the command after || will run only if the command before it did not successfully run.
+
+The next command after ; wil always run.
+
+Anything after # is considered a comment, and not ran.
 
 ---
 
