@@ -1,14 +1,9 @@
-CC=g++
-CC_FLAGS=-Wall -Werror -ansi -pedantic
-EXEC=rshell
-SOURCES=$(wildcard *.cpp)
-OBJECTS=$(SOURCES:.cpp=.o)
+OBJS = src/And.cpp src/Argument.cpp src/Command.cpp src/Or.cpp src/rshell.cpp src/Connector.cpp
+CC = g++
+CFLAGS = -Wall -Werror -ansi -pedantic $(DEBUG)
 
-$(EXEC): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)
 
-%.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $< -o $@
-
-clean:
-	rm -f $(EXEC) $(OBJECTS)
+rshell: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o rshell
+all : $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o all
