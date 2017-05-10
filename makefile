@@ -1,10 +1,14 @@
-OBJS = And.cpp Argument.cpp Command.cpp Or.cpp rshell.cpp Connector.cpp
-CC = g++
-CFLAGS = -Wall -Werror -ansi -pedantic $(DEBUG)
+CC=g++
+CC_FLAGS=-Wall -ansi
+EXEC=test.out
+SOURCES=$(wildcard *.cpp)
+OBJECTS=$(SOURCES:.cpp=.o)
 
-$(MAKE) -C $(CODE_DIR)
+$(EXEC): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(EXEC)
 
-rshell: $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o rshell
-all : $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o all
+%.o: %.cpp
+	$(CC) -c $(CC_FLAGS) $< -o $@
+
+clean:
+	rm -f $(EXEC) $(OBJECTS)
