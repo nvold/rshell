@@ -1,6 +1,10 @@
-VPATH = rshell/src
+OBJS = And.cpp Argument.cpp Command.cpp Or.cpp rshell.cpp Connector.cpp
+CC = g++
+CFLAGS = -Wall -Werror -ansi -pedantic $(DEBUG)
 
-all: Argument.h Connector.h And.h Or.h Command.h
-	g++ -Wall -Werror -ansi -pedantic Argument.cpp Command.cpp Connector.cpp And.cpp Or.cpp rshell.cpp
-rshell: Argument.h Connector.h And.h Or.h Command.h
-	g++ -Wall -Werror -ansi -pedantic Argument.cpp Command.cpp Connector.cpp And.cpp Or.cpp rshell.cpp
+$(MAKE) -C $(CODE_DIR)
+
+rshell: $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o rshell
+all : $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o all
