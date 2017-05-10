@@ -1,7 +1,7 @@
 # rshell
 
 A command shell written in C++. It can read in single commands, or multiple commands on one line.  
-&&, ||, and ; are connectors for multiple commands, with # meaning everything else is a comment
+&&, ||, and ; are connectors for multiple commands, with # meaning everything else is a comment.
 
 ---
 
