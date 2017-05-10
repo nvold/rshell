@@ -1,8 +1,8 @@
-OBJS = src/And.cpp src/Argument.cpp src/Command.cpp src/Or.cpp src/rshell.cpp src/Connector.cpp
+OBJS = And.cpp Argument.cpp Command.cpp Or.cpp rshell.cpp Connector.cpp
 CC = g++
 CFLAGS = -Wall -Werror -ansi -pedantic $(DEBUG)
 
-
+SOURCES = $(rshell find $(src) -name '*.$(cpp)')
 rshell: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o rshell
 all : $(OBJS)
