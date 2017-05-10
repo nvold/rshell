@@ -9,7 +9,7 @@ For ||, the command after || will run only if the command before it did not succ
 
 The next command after ; wil always run.
 
-Anything after # is considered a comment, and not ran.
+Anything after # is considered a comment, and will not be ran.
 
 ---
 
