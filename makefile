@@ -1,14 +1,4 @@
-CC=g++
-CC_FLAGS=-Wall -Werror -ansi -pedantic
-EXEC=rshell all
-SOURCES=$(wildcard *.cpp)
-OBJECTS=$(SOURCES:.cpp=.o)
-
-$(EXEC): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)
-
-%.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $< -o $@
-
-clean:
-	rm -f $(EXEC) $(OBJECTS)
+all: Argument.h Connector.h And.h Or.h Command.h
+	g++ -Wall -Werror -ansi -pedantic Argument.cpp Command.cpp Connector.cpp And.cpp Or.cpp rshell.cpp
+rshell: Argument.h Connector.h And.h Or.h Command.h
+	g++ -Wall -Werror -ansi -pedantic Argument.cpp Command.cpp Connector.cpp And.cpp Or.cpp rshell.cpp
