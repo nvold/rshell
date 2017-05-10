@@ -1,4 +1,3 @@
-#macros
 compile = g++
 flags = -Wall -Werror -ansi -pedantic
 
