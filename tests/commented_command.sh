@@ -1,6 +1,6 @@
 #!/bin/sh
-cd
-cd bin
+echo cd
+echo cd bin
 ./rshell
 ls -l #this is a comment
 echo hello world ; ls -a #comment again
