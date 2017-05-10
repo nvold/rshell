@@ -48,13 +48,13 @@ bool Command::execute(){
     for(char* parameters = strtok(command, " "); parameters != NULL; parameters = strtok(NULL, " ")){
         tempVector.push_back(parameters);
     }
-    char* seperatedParameters[tempVector.size() + 1];
-    unsigned int temp;
-    for(temp = 0; temp < tempVector.size(); ++temp){
+    
+    char** seperatedParameters = new char*[tempVector.size() + 1];
+    for(unsigned int temp = 0; temp < tempVector.size(); ++temp){
         seperatedParameters[temp] = tempVector.at(temp);
     }
     //null at the end to make life easier 
-    seperatedParameters[tempVector.size()] = NULL;
+    seperatedParameters[tempVector.size()] = '\0';
     
     int status;
     pid_t pid = fork();
