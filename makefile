@@ -1,7 +1,7 @@
 CC=g++
 CC_FLAGS=: -Wall -Werror -ansi -pedantic
-EXEC=rshell
-SOURCES=$(wildcard *.cpp)
+EXEC=rshell.out
+SOURCES=$(src *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 
 $(EXEC): $(OBJECTS)
