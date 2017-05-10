@@ -1,5 +1,13 @@
-all:
-	g++ rshell.cpp -o assn2.out -Wall -Werror -ansi -pedantic
+#macros
+compile = g++
+flags = -Wall -Werror -ansi -pedantic
 
+all:
+	mkdir -p ./bin
+	$(compile) $(flags) ./src/*.cpp -o ./bin/rshell
+	
 rshell:
-	g++ rshell.cpp -o assn2.out -Wall -Werror -ansi -pedantic
+	$(compile) $(flags) ./src/*.cpp -o ./bin/rshell
+	
+clean:
+	rm -rf ./bin
