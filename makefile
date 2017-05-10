@@ -1,14 +1,5 @@
-CC=g++
-CC_FLAGS=: -Wall -Werror -ansi -pedantic
-EXEC=rshell.out
-SOURCES=$(src *.cpp)
-OBJECTS=$(SOURCES:.cpp=.o)
+all:
+	g++ rshell.cpp -o assn2.out -Wall -Werror -ansi -pedantic
 
-$(EXEC): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)
-
-%.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $< -o $@
-
-clean:
-	rm -f $(EXEC) $(OBJECTS)
+rshell:
+	g++ rshell.cpp -o assn2.out -Wall -Werror -ansi -pedantic
