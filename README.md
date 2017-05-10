@@ -15,6 +15,6 @@ Anything after # is considered a comment, and will not be ran.
 
 Known Bugs:
 
-  * Ending a line of multiple commands with a connector results in a out of range error.
+  * Ending or starting a line with a connector will result in an out of range error
   * Using & or | instead of && or || will act as connectors when parsing the input, but not be stored as connectors, causing errors.
   * Starting a line of commands with a connector will result in an error.
