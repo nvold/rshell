@@ -1,0 +1,6 @@
+ls
+echo hello how are you
+mkdir testDirectory
+ls -a
+rmdir testDirectory
+ls -a
