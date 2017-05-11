@@ -4,3 +4,4 @@ mkdir testDirectory
 ls -a
 rmdir testDirectory
 ls -a
+exit
