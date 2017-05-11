@@ -1,7 +1,7 @@
 #!/bin/sh
-echo cd
-echo cd bin
-echo ./rshell
+cd
+cd rshell/bin
+./rshell
 ls
 echo hello how are you
 mkdir testDirectory
