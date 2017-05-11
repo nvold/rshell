@@ -1,7 +1,7 @@
 #!/bin/sh
-echo cd
-echo cd bin
-echo ./rshell
+cd
+cd rshell/bin
+./rshell
 ls -a ; echo hello ; mkdir test
 els -l ; echo how are you && mkdir testDirect || echo world ; ls -l
 echo universe ; rmdir testDirect && git status ; ls -l
