@@ -18,24 +18,26 @@ int testCommand(char* testCommand){
     char* path = strtok(NULL, " ");
     //stores the flag in a string for comparison
     string cppFlag = flag;
+    cout << flag << endl;
     
     struct stat locInfo;
     //checks if the path exists
-    if(stat(path, &locInfo) == 0){
+    if(!stat(path, &locInfo)){
         //returns 0 if the location is a directory, 1 if it is not
-        if(locInfo.st_mode && S_IFDIR){
-            if(cppFlag == "-e" || cppFlag == "-d"){
-                return 0;
-            }
-            return 1;
-        }
-        //returns 0 if the location is a file, 1 if it is not
-        else if(locInfo.st_mode && S_IFREG){
+        if(S_ISREG(locInfo.st_mode)){
             if(cppFlag == "-e" || cppFlag == "-f"){
                 return 0;
             }
             return 1;
         }
+        //returns 0 if the location is a file, 1 if it is not
+        else if(S_ISDIR(locInfo.st_mode)){
+            if(cppFlag == "-e" || cppFlag == "-d"){
+                return 0;
+            }
+            return 1;
+        }
+        return 0;
     }
     return 1;
 }
