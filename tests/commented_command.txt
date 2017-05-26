@@ -1,5 +1,5 @@
 ls -a; echo hello; mkdir test #the directory test has been created
-ls -l; echo how are you && mkdir testDirect || echo world; #echo would should only print out if the testDirect does not work
+ls -l; echo how are you && mkdir testDirect || echo world #echo would should only print out if the testDirect does not work
 rmdir test
 rmdir testDirect
 (echo A || echo B) && (echo C || echo D)
