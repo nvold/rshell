@@ -1,0 +1,10 @@
+ls && ( man || echo A ) #this is a comment
+mkdir testDir || mkdir testDir2 && ( rmdir testDir || rmdir testDir2 ) && echo done && exit #the directories should be created and deleted
+ls -a; echo hello; mkdir test #the directory test has been created
+ls -l; echo how are you && mkdir testDirect || echo world; #echo world should only print out of the testDirect do not pass
+( echo universe; rmdir testDirect ) && git status; ls -l #a list of all contents of the current directory 
+(echo A || B) && (echo C || echo D)
+( touch newFile && echo the file has been created) || git status #status of github
+echo will now remove the file; rm newFile && echo file deleted; ls -l
+abc #the command will not work since abc is not a command
+( echo A ( echo B ( echo C ))) #this command only uses echo
