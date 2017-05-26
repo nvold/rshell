@@ -330,7 +330,7 @@ int main(){
         }
         if(leftParenCnt > 0 || rightParenCnt > 0){
             if(leftParenCnt != rightParenCnt){
-                //error
+                cout << "Error: Uneven amount of parentheses" << endl;
             }
             //seperate parsing function for commands with parentheses 
             else{
