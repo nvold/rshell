@@ -1,8 +1,0 @@
-ls && ( man || echo A ) && exit
-mkdir testDir || mkdir testDir2 && ( rmdir testDir || rmdir testDir2 ) && echo done && exit 
-ls -a && echo hello && mkdir test && exit
-ls -l || echo how are you && mkdir testDirect || echo world; ls -l && exit
-( echo how are you && rmdir testDirect ) && git status && ls -l && exit
-( touch newFile && echo the file has been created) || git status && exit
-echo will now remove the file || rm newFile && echo file deleted && ls -l
-abc || exit 
