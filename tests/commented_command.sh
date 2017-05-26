@@ -1,2 +1,2 @@
 #!/bin/sh
-../bin/rshell < comments.txt
+../bin/rshell < commented_command.txt
