@@ -11,6 +11,9 @@ class Command : public Argument{
     public:
         Command(char* input);
         bool execute(); //Runs the command. Returns true if it worked, false if it did not
+        void setLeftChild(Argument*);
+        void setRightChild(Argument*);
+        char getConnector();
 };
 
 #endif

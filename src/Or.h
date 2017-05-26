@@ -7,6 +7,7 @@
 //Inherits from Argument
 class Or : public Argument{
     private:
+        char connector;
         Argument* leftChild;            //pointer to the left child
         Argument* rightChild;           //pointer to the right child
         bool left;                      //Set to true if the left child executed
@@ -15,6 +16,9 @@ class Or : public Argument{
         Or();
         Or(Argument* left_child, Argument* right_child);    //Constructor
         bool execute();
+        void setLeftChild(Argument*);
+        void setRightChild(Argument*);
+        char getConnector();
 };
 
 #endif

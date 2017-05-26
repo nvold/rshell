@@ -2,8 +2,14 @@
 #include "Or.h"
 //Constructor
 Or::Or(){
+    connector = '|';
+    leftChild = 0;
+    rightChild = 0;
+    left = false;
+    right = false;
 }
 Or::Or(Argument* left_Child, Argument* right_Child){
+    connector = '|';
     leftChild = left_Child;
     rightChild = right_Child;
     left = false;
@@ -22,4 +28,14 @@ bool Or::execute(){
         return true;
     }
     return false;
+}
+
+void Or::setLeftChild(Argument* input){
+    leftChild = input;
+}
+void Or::setRightChild(Argument* input){
+    rightChild = input;
+}
+char Or::getConnector(){
+    return connector;
 }

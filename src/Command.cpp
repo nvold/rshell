@@ -6,12 +6,44 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <vector>
 #include <stdlib.h>
 using namespace std;
 
+//runs the test command, returning 0 if the file/directory exists, returning  otherwise
+int testCommand(char* testCommand){
+    //seperates the flag and the path into seperate char*
+    char* flag = strtok(NULL, " ");
+    char* path = strtok(NULL, " ");
+    //stores the flag in a string for comparison
+    string cppFlag = flag;
+    
+    struct stat locInfo;
+    //checks if the path exists
+    if(stat(path, &locInfo) == 0){
+        //returns 0 if the location is a directory, 1 if it is not
+        if(locInfo.st_mode && S_IFDIR){
+            if(cppFlag == "-e" || cppFlag == "-d"){
+                return 0;
+            }
+            return 1;
+        }
+        //returns 0 if the location is a file, 1 if it is not
+        else if(locInfo.st_mode && S_IFREG){
+            if(cppFlag == "-e" || cppFlag == "-f"){
+                return 0;
+            }
+            return 1;
+        }
+    }
+    return 1;
+}
+
+
+
 //Constructor
-//Sotres the command in command
+//Stores the command in command
 Command::Command(char* input){
     command = input;
 }
@@ -20,6 +52,23 @@ bool Command::execute(){
     string cppInput = command;
     string exitCommand = "exit";
     vector<char*> tempVector;
+    
+    //Checks to see if the command is a test command, calls testCommand if it is
+    char* testCheck = strdup(command);
+    char* firstString = strtok(testCheck, " ");
+    string checkTest = firstString;
+    if(checkTest.compare("test") == 0 || checkTest.compare("[") == 0){
+        int result = testCommand(command);
+        if(result == 0){
+            cout << "(true)" << endl;
+            return true;
+        }
+        else if(result == 1){
+            cout <<"(false)" << endl;
+            return true;
+        }
+        return false;
+    }
     
     //Removes extra whitespace at the beginning of the command
     string tempString = command;
@@ -80,4 +129,14 @@ bool Command::execute(){
         cerr << "Error with forking process" << endl;
     }
     return false;
+}
+
+void Command::setLeftChild(Argument* input){
+    return;
+}
+void Command::setRightChild(Argument* input){
+    return;
+}
+char Command::getConnector(){
+    return '0';
 }

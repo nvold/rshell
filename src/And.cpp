@@ -2,12 +2,18 @@
 #include "And.h"
 
 And::And(){
+    leftChild = 0;
+    rightChild = 0;
+    left = false;
+    right = false;
+    connector = '&';
 }
 And::And(Argument* left_Child, Argument* right_Child){
     leftChild = left_Child;
     rightChild = right_Child;
     left = false;
     right = false;
+    connector = '&';
 }
 
 //Runs the command in the left child. Changes left to true if it succeeds
@@ -22,4 +28,14 @@ bool And::execute(){
         return true;
     }
     return false;
+}
+
+void And::setLeftChild(Argument* input){
+    leftChild = input;
+}
+void And::setRightChild(Argument* input){
+    rightChild = input;
+}
+char And::getConnector(){
+    return connector;
 }
