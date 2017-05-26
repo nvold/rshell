@@ -1,9 +1,0 @@
-ls ; mkdir testDir && echo we have created a test directory 
-ls && echo the testDir should be listed here
-test -e testDir && echo it exists, so the result is true
-test -d testDir && echo this is a directory, so its true
-test -f testDir && echo this is false because its not a file
-( ls && echo the directory testDir is still here )
-echo we will now delete the directory ;  rmdir testDir && echo it should be deleted && ( ls -l )
-touch testFile || touch testFile2 && echo the file should have been created
-( ls && test -f testFile || echo this should return true )
