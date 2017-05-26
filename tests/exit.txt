@@ -1,4 +1,3 @@
-mkdir testDir || mkdir testDir2 && ( rmdir testDir || rmdir testDir2 ) && echo done && exit 
 ls -a && echo hello && mkdir test && exit
 ls -l || echo how are you && mkdir testDirect || echo world; ls -l && exit
 ( echo how are you && rmdir testDirect ) && git status && ls -l && exit
