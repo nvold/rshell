@@ -1,7 +1,8 @@
 ls -a && echo hello && mkdir test && exit
 ls -l || echo how are you && mkdir testDirect || echo world; ls -l && exit
-( echo how are you && rmdir testDirect ) && git status && ls -l && exit
-( touch newFile && echo the file has been created) || git status && exit
-echo will now remove the file || rm newFile && echo file deleted && ls -l
-abc || exit 
+(echo how are you & rmdir testDirect) && ls -l && exit
+(touch newFile && echo the file has been created) || git status && exit
+echo will now remove the file && rm newFile && echo file deleted && ls -l
+abc || exit
+rmdir test
 exit
