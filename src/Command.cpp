@@ -18,7 +18,6 @@ int testCommand(char* testCommand){
     char* path = strtok(NULL, " ");
     //stores the flag in a string for comparison
     string cppFlag = flag;
-    cout << flag << endl;
     
     struct stat locInfo;
     //checks if the path exists
