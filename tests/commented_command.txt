@@ -6,5 +6,5 @@ rmdir testDirect
 (touch newFile && echo the file has been created) || git status #stats of github
 echo will now remove the file; rm newFile && echo file deleted; ls -l
 avc #the command will not work since abc is not a command
-(echo A (echo B (echo C))) #this command only uses echo
+(echo A && (echo B && (echo C))) #this command only uses echo
 exit
