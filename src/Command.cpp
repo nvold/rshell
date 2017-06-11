@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 #include <vector>
 #include <stdlib.h>
 using namespace std;
@@ -40,6 +41,74 @@ int testCommand(char* testCommand){
     }
     return 1;
 }
+bool redirectExecute(string input, int num, vector<char*> parsedRedirection){
+    int inRedirection = 0;
+    int outRedirection = 0;
+    char* redirectionCommand;
+    vector<char*> tempVector;
+    for(unsigned int i = 0; i < input.length(); ++i){
+        if(input.at(i) == '<'){
+            inRedirection = 1;
+            redirectionCommand = parsedRedirection.at(0);
+        }
+        else if(input.at(i) == '>'){
+            outRedirection++;
+            redirectionCommand = parsedRedirection.at(0);
+        }
+    }
+    for(char* parameters = strtok(redirectionCommand, " "); parameters != NULL; parameters = strtok(NULL, " ")){
+        tempVector.push_back(parameters);
+    }
+
+    char** seperatedParameters = new char*[tempVector.size() + 1];
+    for(unsigned int temp = 0; temp < tempVector.size(); ++temp){
+        seperatedParameters[temp] = tempVector.at(temp);
+    }
+    //null at the end to make life easier 
+    seperatedParameters[tempVector.size()] = '\0';
+
+    int status;
+    pid_t pid = fork();
+    
+    //child
+    if(pid == 0){
+        if(inRedirection == 1){
+            int fileNum = open(parsedRedirection.at(1), O_RDWR | O_CREAT, S_IRWXU);
+            dup2(fileNum, STDIN_FILENO);
+            close(fileNum);
+        }
+        if(outRedirection == 1){
+            int fileNum = open(parsedRedirection.at(1), O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
+            dup2(fileNum, STDOUT_FILENO);
+            close(fileNum);
+        }
+        else if(outRedirection == 2){
+            int fileNum = open(parsedRedirection.at(1), O_RDWR | O_CREAT, S_IRWXU);
+            dup2(fileNum, STDOUT_FILENO);
+            close(fileNum);
+        }
+        
+        //args: the first command entered, followed by the entire command
+        execvp(seperatedParameters[0], seperatedParameters);
+        exit(EXIT_FAILURE);
+        cout << "Child process failed. " << endl;
+    }
+    //parent 
+    else if(pid > 0){
+        waitpid(-1, &status, 0);
+        if(status == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    //if forking does not work
+    else {
+        cerr << "Error with forking process" << endl;
+    }
+    return false;
+}
 
 
 
@@ -66,6 +135,21 @@ bool Command::execute(){
         }
         else if(result == 1){
             cout <<"(false)" << endl;
+            return true;
+        }
+        return false;
+    }
+    
+    int redirectionCnt = 0;
+    char* ioRedirection = strdup(command);
+    vector<char*> parsedRedirection;
+    for(char* checkRedirection = strtok(ioRedirection, "<>"); checkRedirection != NULL; checkRedirection = strtok(NULL, "<>")){
+        parsedRedirection.push_back(checkRedirection);
+    }
+    redirectionCnt = parsedRedirection.size();
+    if(redirectionCnt > 1){
+        bool check = redirectExecute(cppInput, redirectionCnt, parsedRedirection);
+        if(check == true){
             return true;
         }
         return false;
