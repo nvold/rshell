@@ -21,7 +21,7 @@ Input redirection can be done using <.
 
 Output redirection can be done using > and >>.
 
-Piping can be done by usig |.
+Piping can be done by using |.
 
 ---
 
