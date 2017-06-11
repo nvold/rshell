@@ -17,6 +17,12 @@ The syntax for the test command is "test -e PATH" or "[ -e PATH ]"
 
 Parentheses can be used to control the precedence of the commands.
 
+Input redirection can be done using <.
+
+Output redirection can be done using > and >>.
+
+Piping can be done by usig |.
+
 ---
 
 Known Bugs:
@@ -27,3 +33,4 @@ Known Bugs:
        
        For example, "(ls) && echo a" works, but "ls && (echo a)" will not.
   * Semicolons do not work with commands including precedence operators
+  * Piping does not work
