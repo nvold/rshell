@@ -1,0 +1,5 @@
+ls > exitsingInputFile
+cat < existingInputFile | tr A-Z a-z | tee newOutputFile1 | tr a-z A-z > newOutputFile2
+ls && cat < existingInputFile | tr A-z a-z
+rm existingInputFile; rm newOutputFile1; rm newOutputFile2
+exit

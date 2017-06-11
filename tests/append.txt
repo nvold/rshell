@@ -1,0 +1,10 @@
+ls > newFile
+ls -l >> newFile
+echo hello >> newFile
+rm newFile
+ls > newFile && ls -l >> newFile
+echo hello >> newFile || ls -a >> newFile
+rm newFile
+ls -a > newFile; echo hello >> newFile; ls -l >> newFile
+rm newFile
+exit

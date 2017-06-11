@@ -1,0 +1,14 @@
+ls > newFile
+ls -l > newFile
+echo hello > tempFile
+rm newFile
+ls -a > newFile
+ls > newFile && echo testing > tempFile
+ls -a > newFile && echo erased > newFile
+rm newFile
+rm tempFile
+ls > newFile || echo hello > tempFile
+rm newFile || rm tempFile
+ls > newFile; echo hello > tempFile
+rm newFile; rm tempFile
+exit

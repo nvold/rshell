@@ -1,0 +1,8 @@
+echo hello world > output
+cat < output
+echo there is currently no file named newfile && ls
+eat < newfile
+echo we can see that the newfile was created && ls
+rm newfile
+rm output
+exit
